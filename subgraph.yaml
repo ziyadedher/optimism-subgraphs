@@ -1,0 +1,32 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: L1StandardBridge
+    network: mainnet
+    source:
+      address: "0x40E0C049f4671846E9Cff93AAEd88f2B48E527bB"
+      abi: L1StandardBridge
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ERC20DepositInitiated
+        - ERC20WithdrawalFinalized
+        - ETHDepositInitiated
+        - ETHWithdrawalFinalized
+      abis:
+        - name: L1StandardBridge
+          file: ./abis/L1StandardBridge.json
+      eventHandlers:
+        - event: ERC20DepositInitiated(indexed address,indexed address,indexed address,address,uint256,bytes)
+          handler: handleERC20DepositInitiated
+        - event: ERC20WithdrawalFinalized(indexed address,indexed address,indexed address,address,uint256,bytes)
+          handler: handleERC20WithdrawalFinalized
+        - event: ETHDepositInitiated(indexed address,indexed address,uint256,bytes)
+          handler: handleETHDepositInitiated
+        - event: ETHWithdrawalFinalized(indexed address,indexed address,uint256,bytes)
+          handler: handleETHWithdrawalFinalized
+      file: ./src/l-1-standard-bridge.ts
