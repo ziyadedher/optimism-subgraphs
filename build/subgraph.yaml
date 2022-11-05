@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: L1StandardBridge
@@ -20,7 +20,7 @@ dataSources:
         - ETHWithdrawalFinalized
       abis:
         - name: L1StandardBridge
-          file: ./abis/L1StandardBridge.json
+          file: L1StandardBridge/abis/L1StandardBridge.json
       eventHandlers:
         - event: ERC20DepositInitiated(indexed address,indexed address,indexed
             address,address,uint256,bytes)
@@ -32,4 +32,4 @@ dataSources:
           handler: handleETHDepositInitiated
         - event: ETHWithdrawalFinalized(indexed address,indexed address,uint256,bytes)
           handler: handleETHWithdrawalFinalized
-      file: ./src/l-1-standard-bridge.ts
+      file: L1StandardBridge/L1StandardBridge.wasm
