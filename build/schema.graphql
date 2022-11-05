@@ -1,0 +1,35 @@
+type ERC20DepositInitiated @entity {
+  id: ID!
+  _l1Token: Bytes! # address
+  _l2Token: Bytes! # address
+  _from: Bytes! # address
+  _to: Bytes! # address
+  _amount: BigInt! # uint256
+  _data: Bytes! # bytes
+}
+
+type ERC20WithdrawalFinalized @entity {
+  id: ID!
+  _l1Token: Bytes! # address
+  _l2Token: Bytes! # address
+  _from: Bytes! # address
+  _to: Bytes! # address
+  _amount: BigInt! # uint256
+  _data: Bytes! # bytes
+}
+
+type ETHDepositInitiated @entity {
+  id: ID!
+  _from: Bytes! # address
+  _to: Bytes! # address
+  _amount: BigInt! # uint256
+  _data: Bytes! # bytes
+}
+
+type ETHWithdrawalFinalized @entity {
+  id: ID!
+  _from: Bytes! # address
+  _to: Bytes! # address
+  _amount: BigInt! # uint256
+  _data: Bytes! # bytes
+}
