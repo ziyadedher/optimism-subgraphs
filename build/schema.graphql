@@ -33,3 +33,100 @@ type ETHWithdrawalFinalized @entity {
   _amount: BigInt! # uint256
   _data: Bytes! # bytes
 }
+type FailedRelayedMessage @entity {
+  id: ID!
+  msgHash: Bytes! # bytes32
+}
+
+type MessageAllowed @entity {
+  id: ID!
+  _xDomainCalldataHash: Bytes! # bytes32
+}
+
+type MessageBlocked @entity {
+  id: ID!
+  _xDomainCalldataHash: Bytes! # bytes32
+}
+
+type OwnershipTransferred @entity {
+  id: ID!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type Paused @entity {
+  id: ID!
+  account: Bytes! # address
+}
+
+type RelayedMessage @entity {
+  id: ID!
+  msgHash: Bytes! # bytes32
+}
+
+type SentMessage @entity {
+  id: ID!
+  target: Bytes! # address
+  sender: Bytes! # address
+  message: Bytes! # bytes
+  messageNonce: BigInt! # uint256
+  gasLimit: BigInt! # uint256
+}
+
+type Unpaused @entity {
+  id: ID!
+  account: Bytes! # address
+}
+type StateBatchAppended @entity {
+  id: ID!
+  _batchIndex: BigInt! # uint256
+  _batchRoot: Bytes! # bytes32
+  _batchSize: BigInt! # uint256
+  _prevTotalElements: BigInt! # uint256
+  _extraData: Bytes! # bytes
+}
+
+type StateBatchDeleted @entity {
+  id: ID!
+  _batchIndex: BigInt! # uint256
+  _batchRoot: Bytes! # bytes32
+}
+type L2GasParamsUpdated @entity {
+  id: ID!
+  l2GasDiscountDivisor: BigInt! # uint256
+  enqueueGasCost: BigInt! # uint256
+  enqueueL2GasPrepaid: BigInt! # uint256
+}
+
+type QueueBatchAppended @entity {
+  id: ID!
+  _startingQueueIndex: BigInt! # uint256
+  _numQueueElements: BigInt! # uint256
+  _totalElements: BigInt! # uint256
+}
+
+type SequencerBatchAppended @entity {
+  id: ID!
+  _startingQueueIndex: BigInt! # uint256
+  _numQueueElements: BigInt! # uint256
+  _totalElements: BigInt! # uint256
+}
+
+type TransactionBatchAppended @entity {
+  id: ID!
+  _batchIndex: BigInt! # uint256
+  _batchRoot: Bytes! # bytes32
+  _batchSize: BigInt! # uint256
+  _prevTotalElements: BigInt! # uint256
+  _extraData: Bytes! # bytes
+}
+
+type TransactionEnqueued @entity {
+  id: ID!
+  _l1TxOrigin: Bytes! # address
+  _target: Bytes! # address
+  _gasLimit: BigInt! # uint256
+  _data: Bytes! # bytes
+  _queueIndex: BigInt! # uint256
+  _timestamp: BigInt! # uint256
+}

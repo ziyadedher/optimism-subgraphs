@@ -3,6 +3,18 @@
     "L1StandardBridge": {
       "address": "0x99C9fc46f92E8a1c0deC1b1747d010903E884bE1",
       "startBlock": 13596915
+    },
+    "L1CrossDomainMessenger": {
+      "address": "0xd9166833FF12A5F900ccfBf2c8B62a90F1Ca1FD5",
+      "startBlock": 13596491
+    },
+    "StateCommitmentChain": {
+      "address": "0xBe5dAb4A2e9cd0F27300dB4aB94BeE3A233AEB19",
+      "startBlock": 13596474
+    },
+    "CanonicalTransactionChain": {
+      "address": "0x5E4e65926BA27467555EB562121fac00D24E9dD2",
+      "startBlock": 13596466
     }
   }
 }

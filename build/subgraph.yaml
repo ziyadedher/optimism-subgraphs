@@ -33,3 +33,100 @@ dataSources:
         - event: ETHWithdrawalFinalized(indexed address,indexed address,uint256,bytes)
           handler: handleETHWithdrawalFinalized
       file: L1StandardBridge/L1StandardBridge.wasm
+  - kind: ethereum
+    name: L1CrossDomainMessenger
+    network: mainnet
+    source:
+      abi: L1CrossDomainMessenger
+      address: "0xd9166833FF12A5F900ccfBf2c8B62a90F1Ca1FD5"
+      startBlock: 13596491
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - FailedRelayedMessage
+        - MessageAllowed
+        - MessageBlocked
+        - OwnershipTransferred
+        - Paused
+        - RelayedMessage
+        - SentMessage
+        - Unpaused
+      abis:
+        - name: L1CrossDomainMessenger
+          file: L1CrossDomainMessenger/abis/L1CrossDomainMessenger.json
+      eventHandlers:
+        - event: FailedRelayedMessage(indexed bytes32)
+          handler: handleFailedRelayedMessage
+        - event: MessageAllowed(indexed bytes32)
+          handler: handleMessageAllowed
+        - event: MessageBlocked(indexed bytes32)
+          handler: handleMessageBlocked
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RelayedMessage(indexed bytes32)
+          handler: handleRelayedMessage
+        - event: SentMessage(indexed address,address,bytes,uint256,uint256)
+          handler: handleSentMessage
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: L1CrossDomainMessenger/L1CrossDomainMessenger.wasm
+  - kind: ethereum
+    name: StateCommitmentChain
+    network: mainnet
+    source:
+      abi: StateCommitmentChain
+      address: "0xBe5dAb4A2e9cd0F27300dB4aB94BeE3A233AEB19"
+      startBlock: 13596474
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - StateBatchAppended
+        - StateBatchDeleted
+      abis:
+        - name: StateCommitmentChain
+          file: StateCommitmentChain/abis/StateCommitmentChain.json
+      eventHandlers:
+        - event: StateBatchAppended(indexed uint256,bytes32,uint256,uint256,bytes)
+          handler: handleStateBatchAppended
+        - event: StateBatchDeleted(indexed uint256,bytes32)
+          handler: handleStateBatchDeleted
+      file: StateCommitmentChain/StateCommitmentChain.wasm
+  - kind: ethereum
+    name: CanonicalTransactionChain
+    network: mainnet
+    source:
+      abi: CanonicalTransactionChain
+      address: "0x5E4e65926BA27467555EB562121fac00D24E9dD2"
+      startBlock: 13596466
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - L2GasParamsUpdated
+        - QueueBatchAppended
+        - SequencerBatchAppended
+        - TransactionBatchAppended
+        - TransactionEnqueued
+      abis:
+        - name: CanonicalTransactionChain
+          file: CanonicalTransactionChain/abis/CanonicalTransactionChain.json
+      eventHandlers:
+        - event: L2GasParamsUpdated(uint256,uint256,uint256)
+          handler: handleL2GasParamsUpdated
+        - event: QueueBatchAppended(uint256,uint256,uint256)
+          handler: handleQueueBatchAppended
+        - event: SequencerBatchAppended(uint256,uint256,uint256)
+          handler: handleSequencerBatchAppended
+        - event: TransactionBatchAppended(indexed uint256,bytes32,uint256,uint256,bytes)
+          handler: handleTransactionBatchAppended
+        - event: TransactionEnqueued(indexed address,indexed address,uint256,bytes,indexed
+            uint256,uint256)
+          handler: handleTransactionEnqueued
+      file: CanonicalTransactionChain/CanonicalTransactionChain.wasm
